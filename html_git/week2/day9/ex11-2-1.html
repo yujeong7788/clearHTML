@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>grid 그리기</title>
+    <style>
+        body {
+            background-color: aquamarine;
+            margin: 0;
+            left: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <canvas id="myCanvas" width="420px" height="420px" style="background-color: white; margin: 20px;" onclick="fn_click(event)" >
+    </canvas>
+    <button onclick="fn_draw()">그려</button>
+    <script>
+        let w = 400;
+        let h = 400;
+        let p = 10;
+        let t = 10;
+        let canvas = document.getElementById('myCanvas');
+        let context = canvas.getContext('2d');
+        function fn_draw() {
+
+            context.moveTo(p, t)
+            context.lineTo(p + 400, t)
+            context.lineTo(p, t)
+            context.lineTo(p, t + 400)
+
+            for (let i = 0; i < 10; i++) {
+                p += 40;
+                context.moveTo(p, t)
+                context.lineTo(p, t + 400)
+                context.strokeStyle = 'black';
+            }
+            for (let i = 0; i < 10; i++) {
+                p = 10;
+                t += 40;
+                context.moveTo(p, t)
+                context.lineTo(p + 400, t)
+                context.strokeStyle = 'black';
+                console.log(')'+p + ',' + t)
+            }
+            context.stroke();
+        }
+
+        // function fn_click(e){ 
+        //     context.beginPath();
+        //     const x = e.clientX - context.canvas.offsetLeft
+	    //     const y = e.clientY - context.canvas.offsetTop
+        //     context.fillStyle='violet';
+        //     context.rect(x-20,y-20,40,40);
+        //     context.fill();
+        //     context.stroke();
+           
+        // }
+
+        function fn_click(e){
+            context.beginPath();
+            context.fillStyle='violet';
+            const x = e.clientX - context.canvas.offsetLeft
+	        const y = e.clientY - context.canvas.offsetTop
+            context.rect(x,y,40,40);
+            context.fill();
+            context.stroke();
+        }
+
+    </script>
+</body>
+    
+</html>
