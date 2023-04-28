@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+	<style>
+
+	</style>
+	<meta charset="UTF-8">
+	<title> 가위바위보 </title>
+	<script>
+		function reGame() {
+			location.reload();
+		}
+		document.write("<h1>컴퓨터 가위, 바위, 보 맞추기</h1>");
+		let game = prompt("가위, 바위, 보 중 선택하세요?", "가위");
+		let com = Math.ceil(Math.random() * 3);
+
+		switch (game) {
+			case "가위": game = 1;
+				break;
+			case "바위": game = 2;
+				break;
+			case "보": game = 3;
+				break;
+		}
+		//랜덤함수를 활용하여 가위바위보 게임을 만들어보세요 ^^ 
+		document.write("<img src=\"images/math_com_" + com + ".jpg\">" + "com"+"<span style = 'font-size:100px'>VS</span>" + '<img src="images/math_user_' + game + '.jpg">' + "user");
+		document.write();
+		let user = "";
+		let result = "";
+		// 1 : 가위 2: 바위 3: 보
+		// 결과 1 : 유저가 이김
+		// 결과 2 : 컴이 이김
+		// 결과 3 : 비김
+		while (true) {
+			if (game == 1) {
+				if (com == 2) {
+					document.write('<img src="images/game_' + 2 + '.jpg">');
+					break;
+				} else if (com == 3) {
+					document.write('<img src="images/game_' + 1 + '.jpg">');
+					break;
+				} else {
+					document.write('<img src="images/game_' + 3 + '.jpg">');
+					break;
+				}
+			} else if (game == 2) {
+				if (com == 1) {
+					document.write('<img src="images/game_' + 1 + '.jpg">');
+					break;
+				} else if (com == 3) {
+					document.write('<img src="images/game_' + 2 + '.jpg">');
+					break;
+				} else {
+					document.write('<img src="images/game_' + 3 + '.jpg">');
+					break;
+				}
+			} else {
+				if (com == 1) {
+					document.write('<img src="images/game_' + 2 + '.jpg">');
+					break;
+				} else if (com == 2) {
+					document.write('<img src="images/game_' + 1 + '.jpg">');
+					break;
+				} else {
+					document.write('<img src="images/game_' + 3 + '.jpg">');
+					break;
+				}
+			}
+		}
+
+
+
+
+	</script>
+</head>
+
+<body>
+</body>
+
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>checkbox 다중선택</title>
+</head>
+<body>
+    <div>
+        <h3>취미를 선택하세요</h3>
+        <label for="p_all">전체</label><input type="checkbox" id="p_all"  onchange="fn_change()">
+    </div>
+    <div>
+        <label for="">독서</label><input type="checkbox" name="hobby" value="read" checked> <!--디폴트로 선택되어있음-->
+        <label for="">요리</label><input type="checkbox" name="hobby" value="cook">
+        <label for="">게임</label><input type="checkbox" name="hobby" value="game">
+        <label for="">서핑</label><input type="checkbox" name="hobby" value="surf">
+        <input type="button" value="확인" onclick="fn_check()">
+    </div>
+    <script>
+        function fn_check(){
+            let obj = document.getElementsByName('hobby');
+            console.log(obj);
+            let msg = "당신의 취미는 ";
+            for(i of obj){
+                if(i.checked){
+                    console.log(i.previousSibling);
+                    msg += i.value + ":" + i.previousSibling.innerHTML;
+                }
+            }
+            alert(msg + "입니다.");
+        }
+
+        function fn_change(){
+            let temp = document.getElementById('p_all')
+            if(temp.checked == true){
+                // 전체 선택
+                let obj = document.getElementsByName('hobby');   
+                for(i in obj){
+                    obj[i].checked = true;
+                }
+            }else{
+                // 전체 선택 해제
+                let obj = document.getElementsByName('hobby');   
+                for(i in obj){
+                    obj[i].checked = false;
+                }
+            }
+        }
+        
+        function fn_all(obj){ // this
+            let hobby = document.getElementsByName('hobby');
+            let flag = false;
+            if(obj.checked){ // all 체크박스의 checked 값
+                flag = true;
+            }
+            for(let i of hobby){ // hobby name을 가지고 있는 체크박스 값을 all 체크박스랑 동일하게
+                i.checked = flag;
+            }
+        }
+    </script>
+</body>
+</html>

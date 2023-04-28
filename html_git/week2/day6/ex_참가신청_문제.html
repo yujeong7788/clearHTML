@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/nameList.css">
+</head>
+
+<body>
+    <div id="container">
+        <h1>참가 신청서</h1>
+        <form action="" onsubmit="return false">
+            <input type="text" id="userName" placeholder="이름을 입력하세요" autocomplete="off" onkeyup="fn_enter(event)"
+                required>
+            <button type="button" onclick="fn_register()">신청</button>
+        </form>
+        <hr>
+        <div id="nameList"></div>
+    </div>
+    <script>
+        function fn_register() {
+            let cls = document.getElementsByClassName('myDiv');
+            let obj = document.getElementById('userName');
+            let newDIV = document.createElement('p');
+            newDIV.setAttribute('class', 'myDiv');
+            newDIV.innerHTML = obj.value;
+            let list = document.getElementById("nameList");
+            // document.getElementById("nameList").innerHTML = obj.value;
+            list.appendChild(newDIV);
+            document.getElementById('userName').value = "";
+            let btn = document.createElement('span');
+            btn.innerHTML = 'X';
+            btn.setAttribute('class', 'del')
+            btn.onclick = function () {
+                let p = this.parentElement.parentElement;
+                let div = this.parentElement;
+                p.removeChild(div);
+            }
+            newDIV.appendChild(btn);
+        };
+
+
+        function fn_enter(e) {
+            console.log(e);
+            console.log(e.keyCode);
+            if (e.keyCode == 13) {
+                fn_register();
+            }
+        }
+    </script>
+</body>
+
+</html>

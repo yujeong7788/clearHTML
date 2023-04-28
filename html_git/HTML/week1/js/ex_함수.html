@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        /* 선언적 함수 -> html 문서를 읽을때 호이스팅 되어 script 어디서나 호출가능 (항상 먼저 읽음)
+           익명함수    -> 호이스팅시 변수명만 읽어드려 함수로 인식 못해 오류 남.
+            
+            호이스팅(Hoisting) javascript에서 변수와 함수 선언을 코드의 맨 위로
+            끌어올리는 현상 (실행 컨텍스트 생성 단계에서 발생함.)
+        */
+       fn_test1(); // 함수보다 위에서 사용가능,선언적 함수를 항상 먼저 읽기때문
+        // 선언적 함수
+       function fn_test1(){
+        console.log('선언적 함수임');
+       }
+
+    //    fn_test2(); // 오류 . 변수명인지는 아는데 함수인지는 모름
+                // 함수로 인식하지 못하여 오류남 (아래에서는 사용 가능)
+       
+       // 익명함수
+       let fn_test2 = function(){
+        console.log('익명 함수임');
+       }
+       fn_test2();
+
+       // 콜백함수
+       function fn_call(func){
+        // 함수를 매개변수로 전달받아 사용
+        for(let i = 0; i < 5; i++){
+            func(); // 전달 받은 함수 사용
+        }
+        // return func;
+       }
+
+       let p_call = function(){
+        alert('hi');
+       }
+
+       fn_call(fn_test2);
+       fn_call(p_call);
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

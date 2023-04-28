@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>input select</title>
+    
+</head>
+<body>
+    <h3>select box 변경</h3>
+    <hr>
+    <form action="http://www.naver.com"> <!--폼태그 특징 전송 디폴트-->
+        <select name="p_sel" id="p_select" onchange="fn_change(this)"><!--선택된 값(selected) 넘어감-->
+            <option value="없음" selected>선택하세요</option> <!--선택되어져있는 상태-->
+            <option value="찬웅쌤">JAVA</option> <!--진짜 값은 value-->
+            <option value="용우쌤">JSP</option>
+        </select>
+        <!--선택값 가져오기 버튼 클릭시 select 선택 값을 p_txt2 value에 넣어보기-->
+        <input type="button" id="p_btn" value="선택값 가져오기" onclick="fn_click()">
+        <!-- disabled 은 form 태그 전송시 전송 안됨
+             readonly 는 form 태그 전송시 전송이 됨-->
+        <input type="text" id="p_txt" name="p_txt" readonly ><!--변경되면 안되는것에 readonly / disabled (아예 선택도 안됨)-->
+        <input type="text" id="p_txt2" name="p_txt2" readonly >
+        <input type="reset" name="" id="리셋"> <!--선택한 값을 초기화-->
+        <input type="submit" value="전송">
+    <script>
+        function fn_change(obj){
+            console.log(obj.selectedIndex);
+            console.log(obj.options[obj.selectedIndex].value);
+            console.log(obj.options[obj.selectedIndex].text);
+            document.getElementById('p_txt').value  = obj.options[obj.selectedIndex].value;
+            
+        }
+        function fn_click(){
+            let obj = document.getElementById('p_select');
+            document.getElementById('p_txt2').value = obj.options[obj.selectedIndex].value;
+        }
+        
+    </script>
+</body>
+</html>
